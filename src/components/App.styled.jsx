@@ -4,4 +4,5 @@ import 'normalize.css';
 export const AppWrapper = styled.div`
   width: 100%;
   height: 100vh;
+  color: var(--primery-color-black);
 `;

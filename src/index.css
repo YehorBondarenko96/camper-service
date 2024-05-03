@@ -18,9 +18,16 @@ a{
   text-decoration: none;
 }
 
+ul{
+  list-style: none;
+}
+
 :root {
   --primery-color-red: #e44848;
   --primery-color-white: #ffffff;
+  --primery-color-black: #101828;
 
   --second-color-red: #e2312e;
+
+  --border-color-grey: #cdcdcd;
 }
