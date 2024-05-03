@@ -1,7 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { filmsReducer } from "./filmsSlice";
-import { filterReducer } from "./filterSlice";
-import { backgroundReducer } from "./backgroundImgSlice";
+import { campersReducer } from "./campersSlice";
 import {
     persistStore,
     persistReducer,
@@ -13,20 +11,16 @@ import {
     REGISTER,
     } from 'redux-persist';
 import storage from "redux-persist/lib/storage";
-import { authReducer } from "./workWithBackend/slice";
 
 const authConfig = {
-    key: 'auth',
+    key: 'campers',
     storage,
-    whitelist: ['token', 'isLoggedIn', 'user'],
+    whitelist: ['favoriteItems', 'page'],
 };
 
 export const store = configureStore({
     reducer: {
-        auth: persistReducer(authConfig, authReducer),
-        films: filmsReducer,
-        filter: filterReducer,
-        backgroundImages: backgroundReducer
+        campers: persistReducer(authConfig, campersReducer),
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

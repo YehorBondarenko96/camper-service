@@ -1,15 +1,9 @@
-export const selectFilms = state => state.films.items;
+export const selectCampers = state => state.campers.items;
 
-export const selectFilter = state => state.filter;
+export const selectPage = state => state.campers.page;
 
-export const selectIsLoading = state => state.films.isLoading;
+export const selectIsLoading = state => state.campers.isLoading;
 
-export const selectSecError = state => state.films.error;
+export const selectBackgroundImage = state => state.campers.backgroundImage;
 
-export const selectBackgroundImages = state => state.backgroundImages.images;
-
-export const selectScrollLeftLists = state => state.films.scrollLeftLists;
-
-export const selectScreenOrient = state => state.films.screenOrientation;
-
-export const selectEmail = state => state.films.email;
+export const selectFavorItems = state => state.campers.favorItems;
