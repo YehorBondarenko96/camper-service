@@ -1,11 +1,13 @@
 import {
   Li, DivImage, Image, ButtonFavor, SvgFavor, DivNamePrice, Name, Price, DivButtFavPrise,
-  DivReviewsLocation, DivSvgText, SvgLittle, TextReviewsLocation, DivAllInfo, TextDescription
+  DivReviewsLocation, DivSvgText, SvgLittle, TextReviewsLocation, DivAllInfo, TextDescription,
+  UlCharacteristic, ButtonShowMore
 } from "./LiCampers.styled";
 import icon from "../../Vector.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { selectFavorItems } from "../../redux/selectors";
 import { addFavor, delFavor } from "../../redux/campersSlice";
+import { LiCharacteristic } from "components/LiCharacteristic/LiCharacteristic";
 
 export const LiCampers = ({ camper }) => {
   const dispatch = useDispatch();
@@ -31,8 +33,7 @@ export const LiCampers = ({ camper }) => {
     }
     }
   };
-  
-  console.log('camper: ', camper);
+
   return (
     <Li>
       <DivImage>
@@ -69,6 +70,41 @@ export const LiCampers = ({ camper }) => {
         </DivSvgText>
         </DivReviewsLocation>
         <TextDescription>{camper.description}</TextDescription>
+        <UlCharacteristic>
+          <LiCharacteristic
+            svg={<use href={`${icon}#users`}></use>}
+            text={`${camper.adults} adults`}
+          />
+          <LiCharacteristic
+            svg={<use href={`${icon}#transmission`}></use>}
+            text={`${camper.transmission}`}
+          />
+          <LiCharacteristic
+            svg={<use href={`${icon}#engine`}></use>}
+            text={`${camper.engine}`}
+          />
+          {camper.details.kitchen > 0 &&
+            <LiCharacteristic
+            svg={<use href={`${icon}#kitchen`}></use>}
+            text={'kitchen'}
+            />
+          }
+          {camper.details.beds > 0 &&
+            <LiCharacteristic
+            svg={<use href={`${icon}#bed`}></use>}
+            text={`${camper.details.beds} ${camper.details.beds === 1 ? 'bed' : 'beds'}`}
+          />
+          }
+          {camper.details.airConditioner > 0 &&
+            <LiCharacteristic
+            svg={<use href={`${icon}#airConditioner`}></use>}
+            text={'AC'}
+            />
+          }
+        </UlCharacteristic>
+        <ButtonShowMore>
+          Show more
+        </ButtonShowMore>
       </DivAllInfo>
     </Li>
   )

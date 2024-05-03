@@ -44,6 +44,9 @@ font-size: 24px;
 font-weight: 700;
 line-height: 1.25;
 margin: 0;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 `;
 
 export const DivButtFavPrise = styled.div`
@@ -101,4 +104,35 @@ font-size: 16px;
   line-height: 1.5;
   margin-top: 24px;
   color: var(--second-color-grey);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const UlCharacteristic = styled.ul`
+margin-top: 24px;
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+`;
+
+export const ButtonShowMore = styled.button`
+width: 166px;
+height: 56px;
+box-sizing: border-box;
+font-size: 16px;
+font-weight: 500;
+line-height: 1.5;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 200px;
+background-color: var(--primery-color-red);
+color: var(--primery-color-white);
+margin-top: 24px;
+border: 0;
+
+&:hover{
+  background-color: var(--second-color-red);
+}
 `;
