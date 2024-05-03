@@ -1,9 +1,6 @@
 import {
-  Li,
-  DivImage,
-  Image,
-  ButtonFavor,
-  SvgFavor
+  Li, DivImage, Image, ButtonFavor, SvgFavor, DivNamePrice, Name, Price, DivButtFavPrise,
+  DivReviewsLocation, DivSvgText, SvgLittle, TextReviewsLocation, DivAllInfo, TextDescription
 } from "./LiCampers.styled";
 import icon from "../../Vector.svg";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,6 +19,18 @@ export const LiCampers = ({ camper }) => {
       dispatch(addFavor(camper))
     }
   };
+
+  const price = () => { 
+    if (camper.price) {
+      const arrPrice = String(camper.price).split('');
+    const indexDot = arrPrice.indexOf('.');
+    if (indexDot === -1) {
+      return `${camper.price}.00`
+    } else {
+      return `${camper.price}`
+    }
+    }
+  };
   
   console.log('camper: ', camper);
   return (
@@ -29,11 +38,38 @@ export const LiCampers = ({ camper }) => {
       <DivImage>
         <Image src={camper.gallery[0]} alt={camper.name} />
       </DivImage>
-      <ButtonFavor type="button" onClick={handleClick}>
+      <DivAllInfo>
+        <DivNamePrice>
+        <Name>{camper.name}</Name>
+        <DivButtFavPrise>
+          <Price>{`€${price()}`}</Price>
+        <ButtonFavor type="button" onClick={handleClick}>
         <SvgFavor>
           <use href={thisFavor ? `${icon}#heart-red` : `${icon}#heart`}></use>
         </SvgFavor>
       </ButtonFavor>
+        </DivButtFavPrise>
+      </DivNamePrice>
+      <DivReviewsLocation>
+        <DivSvgText>
+          <SvgLittle>
+          <use href={`${icon}#star`}></use>
+          </SvgLittle>
+            <TextReviewsLocation style={{textDecoration: 'underline',}}>
+              {`${camper.rating}(${camper.reviews.length} Reviews)`}
+          </TextReviewsLocation>
+        </DivSvgText>
+        <DivSvgText>
+            <SvgLittle>
+          <use href={`${icon}#location`}></use>
+          </SvgLittle>
+          <TextReviewsLocation>
+            {`${camper.location}`}
+          </TextReviewsLocation>
+        </DivSvgText>
+        </DivReviewsLocation>
+        <TextDescription>{camper.description}</TextDescription>
+      </DivAllInfo>
     </Li>
   )
 };

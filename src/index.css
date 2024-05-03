@@ -21,6 +21,10 @@ a{
 ul{
   list-style: none;
 }
+p{
+  margin: 0;
+  padding: 0;
+}
 
 :root {
   --primery-color-red: #e44848;
@@ -28,6 +32,7 @@ ul{
   --primery-color-black: #101828;
 
   --second-color-red: #e2312e;
+  --second-color-grey: #475467;
 
   --border-color-grey: #cdcdcd;
 }

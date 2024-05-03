@@ -38,13 +38,11 @@ const campersSlice = createSlice({
             state.items = updResult;
         })
             .addCase(fetchCampers.rejected, forRejected)
-        .addCase(searchForBackground.pending, forPending)
+        .addCase(searchForBackground.pending)
         .addCase(searchForBackground.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.error = null;
             state.backgroundImage = action.payload[0].largeImageURL;
         })
-            .addCase(searchForBackground.rejected, forRejected)
+            .addCase(searchForBackground.rejected)
     }
 });
 
