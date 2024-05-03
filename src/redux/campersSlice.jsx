@@ -19,7 +19,15 @@ const forRejected = (state, action) => {
 const campersSlice = createSlice({
     name: 'campers',
     initialState: campersInitialState,
-    // reducers:{},
+    reducers: {
+        addFavor: (state, action) => {
+            state.favorItems.push(action.payload);
+        },
+        delFavor: (state, action) => {
+            const index = state.favorItems.findIndex(fav => fav.id === action.payload.id);
+            state.favorItems.splice(index, 1);
+        }
+    },
     extraReducers: builder => {
         builder
         .addCase(fetchCampers.pending, forPending)
@@ -41,4 +49,4 @@ const campersSlice = createSlice({
 });
 
 export const campersReducer = campersSlice.reducer;
-// export const {} = filmsSlice.actions;
+export const {addFavor, delFavor} = campersSlice.actions;
