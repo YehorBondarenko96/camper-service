@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/camper-service/static/css/main.3ea5bee6.css",
+    "main.js": "/camper-service/static/js/main.679f6852.js",
+    "static/js/812.850e1bec.chunk.js": "/camper-service/static/js/812.850e1bec.chunk.js",
+    "static/js/977.1d2da502.chunk.js": "/camper-service/static/js/977.1d2da502.chunk.js",
+    "static/js/212.f7b0837c.chunk.js": "/camper-service/static/js/212.f7b0837c.chunk.js",
+    "index.html": "/camper-service/index.html",
+    "main.3ea5bee6.css.map": "/camper-service/static/css/main.3ea5bee6.css.map",
+    "main.679f6852.js.map": "/camper-service/static/js/main.679f6852.js.map",
+    "812.850e1bec.chunk.js.map": "/camper-service/static/js/812.850e1bec.chunk.js.map",
+    "977.1d2da502.chunk.js.map": "/camper-service/static/js/977.1d2da502.chunk.js.map",
+    "212.f7b0837c.chunk.js.map": "/camper-service/static/js/212.f7b0837c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3ea5bee6.css",
+    "static/js/main.679f6852.js"
+  ]
+}
