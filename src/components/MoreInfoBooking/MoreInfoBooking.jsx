@@ -6,6 +6,7 @@ import {
 } from "./MoreInfoBooking.styled";
 import { Features } from "components/Features/Features";
 import { Reviews } from "components/Reviews/Reviews";
+import { BookingForm } from "components/BookingForm/BookingForm";
 import { useState } from "react";
 
 export const MoreInfoBooking = ({ camper }) => {
@@ -26,7 +27,7 @@ export const MoreInfoBooking = ({ camper }) => {
       <DivMoreInfoBooking>
         {selectedF && <Features camper={camper} />}
         {!selectedF && <Reviews camper={camper} />}
-
+        <BookingForm/>
       </DivMoreInfoBooking>
     </>
   )
