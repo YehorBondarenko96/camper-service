@@ -27,7 +27,7 @@ export const ButtonAfter = styled.div`
   height: 4px;
   border-radius: 2px;
   background: var(--primery-color-red);
-  top: 100%;
+  top: 46px;
   left: 50%;
   transform: translateX(-50%);
 `;

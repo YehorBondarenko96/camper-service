@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Li = styled.li`
 display: flex;
 flex-direction: column;
-height: 172px;
 width: 430px;
 box-sizing: border-box;
 gap: 16px;
@@ -36,9 +35,27 @@ line-height: 1.25;
 `;
 
 export const DivNameStars = styled.div`
+margin: 8px 0;
 display: flex;
-flex-direction: column:
+flex-direction: column;
 gap: 4px;
+`;
+
+export const NameUsers = styled.p`
+font-size: 18px;
+font-weight: 600;
+line-height: 1.33;
+`;
+
+export const DivSvg = styled.div`
+display: flex;
+gap: 4px;
+`;
+
+export const Svg = styled.svg`
+width: 16px;
+height: 16px;
+box-sizing: border-box;
 `;
 
 export const TextComment = styled.p`
