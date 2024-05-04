@@ -99,3 +99,20 @@ width: 20px;
 height: 20px;
 box-sizing: border-box;
 `;
+
+export const Textarea = styled.textarea`
+height: 114px;
+width: 400px;
+box-sizing: border-box;
+border: 0;
+border-radius: 10px;
+padding: 18px;
+font-size: 16px;
+font-weight: 400;
+line-height: 1.25;
+background-color: var(--input-color-gray);
+
+&::placeholder{
+color: var(--second-color-grey);
+}
+`;
