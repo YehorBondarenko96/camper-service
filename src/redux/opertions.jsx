@@ -1,7 +1,8 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = 'https://camper-service-backend-p69o.onrender.com/api/campers';
+// axios.defaults.baseURL = 'https://camper-service-backend-p69o.onrender.com/api/campers';
+axios.defaults.baseURL = 'http://localhost:3000/api/campers';
 
 export const fetchCampers = createAsyncThunk('campers/fetchAll', async(page, thunkAPI) => {
     try{

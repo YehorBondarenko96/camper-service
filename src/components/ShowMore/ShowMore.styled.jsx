@@ -4,6 +4,7 @@ export const AllDivFirstInfo = styled.div`
 display: flex;
 flex-direction: column;
 gap: 24px;
+margin-bottom: 44px;
 `;
 
 export const DivBriefInfo = styled.div``;

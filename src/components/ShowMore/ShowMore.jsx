@@ -8,6 +8,7 @@ import {
   Price,
   TextDescription
 } from "./ShowMore.styled";
+import { MoreInfoBooking } from "components/MoreInfoBooking/MoreInfoBooking";
 
 export const ShowMore = ({ camper, onClose }) => {
   const price = () => { 
@@ -33,6 +34,7 @@ export const ShowMore = ({ camper, onClose }) => {
         <Gallery gallery={camper.gallery} alt={camper.name} />
         <TextDescription>{camper.description}</TextDescription>
       </AllDivFirstInfo>
+      <MoreInfoBooking camper={camper}/>
     </ModalWindow>
   )
 };
