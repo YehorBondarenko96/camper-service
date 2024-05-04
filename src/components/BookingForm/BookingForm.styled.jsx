@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AllDiv = styled.div`
+export const AllForm = styled.form`
 display: flex;
 flex-direction: column;
 height: 530px;

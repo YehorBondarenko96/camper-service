@@ -1,5 +1,5 @@
 import {
-  AllDiv,
+  AllForm,
   DivText,
   Title,
   Text,
@@ -20,6 +20,7 @@ export const BookingForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [date, setDate] = useState('');
+  const [comment, setComment] = useState('');
 
   const setUserName = (e) => { 
     let inpValue = e.target.value;
@@ -69,14 +70,60 @@ export const BookingForm = () => {
             (arrSelectedYear[3] && arrActYear[3] > arrSelectedYear[3])) {
           toast.error('Selected date cannot be in the past')
           return
+        } else if ((arrSelectedYear[0] && arrActYear[0] < arrSelectedYear[0]) ||
+          (arrSelectedYear[1] && arrActYear[1] < arrSelectedYear[1]) ||
+          (arrSelectedYear[2] && arrActYear[2] < arrSelectedYear[2]) ||
+            (arrSelectedYear[3] && 7 < arrSelectedYear[3])) {
+          toast.error(`The selected date cannot be later than the year 2027`)
+          return
         }
-      }
-    }
+      };
+
+      if (arrDate[0] && arrDate[1]) {
+        if (
+          arrDate[0] === '31' && (arrDate[1] === '02' || arrDate[1] === '04'
+          || arrDate[1] === '06' || arrDate[1] === '09' || arrDate[1] === '11'
+        )) {
+          toast.error('Invalid date')
+          return
+        } else if (
+          (arrDate[0] === '30' || arrDate[0] === '29') && arrDate[1] === '02') {
+          toast.error('Invalid date')
+          return
+        }
+      };
+    };
     setDate(inpValue);
   };
 
+  const setUserComment = (e) => {
+    const inpValue = e.target.value;
+    if (inpValue.length > 300) {
+    toast.error('Comment cannot exceed 300 characters')
+    } else {
+      setComment(inpValue);
+    }
+  }
+
+  const handleSubmit = (e) => {
+    const arrDate = date.split('.');
+    if (name !== '' || email !== '' || !arrDate[2]) {
+      const userData = {
+        name,
+        email,
+        date,
+        comment
+      };
+      console.log(userData);
+    } else {
+        e.preventDefault();
+        toast.error('Comment cannot exceed 300 characters')
+    }
+  };
+
   return (
-    <AllDiv>
+    <>
+      <AllForm onSubmit={handleSubmit}>
       <DivText>
         <Title>Book your campervan now</Title>
         <Text>Stay connected! We are always ready to help you.</Text>
@@ -110,14 +157,17 @@ export const BookingForm = () => {
         <Textarea
           type="text"
           placeholder="Comment"
+          value={comment}
+          onChange={setUserComment}
         />
       </DivInputs>
       <ButtonSend
-        type="button"
+        type="submit"
       >
         Send
       </ButtonSend>
+    </AllForm>
       <ToastContainer />
-    </AllDiv>
+    </>
   )
 };
