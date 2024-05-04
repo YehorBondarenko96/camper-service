@@ -107,7 +107,28 @@ export const BookingForm = () => {
 
   const handleSubmit = (e) => {
     const arrDate = date.split('.');
-    if (name !== '' || email !== '' || !arrDate[2]) {
+
+    const today = new Date();
+const day = parseInt(arrDate[0], 10); 
+const month = parseInt(arrDate[1], 10) - 1; 
+const year = parseInt(arrDate[2], 10);
+
+const inputDate = new Date(year, month, day);
+
+
+    if (name === '') {
+      e.preventDefault();
+      toast.error('Name is required')
+    } else if (email === '') {
+      e.preventDefault();
+      toast.error('Email is required')
+    } else if (!arrDate[2]) {
+      e.preventDefault();
+      toast.error('Date is required')
+    } else if (inputDate <= today) {
+      e.preventDefault();
+      toast.error('The selected date must be in the future')
+    } else{
       const userData = {
         name,
         email,
@@ -115,9 +136,6 @@ export const BookingForm = () => {
         comment
       };
       console.log(userData);
-    } else {
-        e.preventDefault();
-        toast.error('Comment cannot exceed 300 characters')
     }
   };
 
