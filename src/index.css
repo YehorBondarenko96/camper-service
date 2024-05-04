@@ -39,4 +39,6 @@ p{
   --second-color-grey: #475467;
 
   --border-color-grey: #cdcdcd;
+
+  --backdrop-color: rgba(17, 18, 19, 0.4);
 }

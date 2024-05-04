@@ -1,16 +1,19 @@
 import {
   Li, DivImage, Image, ButtonFavor, SvgFavor, DivNamePrice, Name, Price, DivButtFavPrise,
-  DivReviewsLocation, DivSvgText, SvgLittle, TextReviewsLocation, DivAllInfo, TextDescription,
-  UlCharacteristic, ButtonShowMore
+  DivAllInfo, TextDescription, UlCharacteristic, ButtonShowMore
 } from "./LiCampers.styled";
 import icon from "../../Vector.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { selectFavorItems } from "../../redux/selectors";
 import { addFavor, delFavor } from "../../redux/campersSlice";
 import { LiCharacteristic } from "components/LiCharacteristic/LiCharacteristic";
+import { ShowMore } from "components/ShowMore/ShowMore";
+import { useState } from "react";
+import { ReviewsLocation } from "components/ReviewsLocation/ReviewsLocation";
 
 export const LiCampers = ({ camper }) => {
   const dispatch = useDispatch();
+  const [openShowMore, setOpenShowMore] = useState(false);
   const favorCampers = useSelector(selectFavorItems);
   const thisFavor = favorCampers.find(fav => fav.id === camper.id);
 
@@ -51,24 +54,7 @@ export const LiCampers = ({ camper }) => {
       </ButtonFavor>
         </DivButtFavPrise>
       </DivNamePrice>
-      <DivReviewsLocation>
-        <DivSvgText>
-          <SvgLittle>
-          <use href={`${icon}#star`}></use>
-          </SvgLittle>
-            <TextReviewsLocation style={{textDecoration: 'underline',}}>
-              {`${camper.rating}(${camper.reviews.length} Reviews)`}
-          </TextReviewsLocation>
-        </DivSvgText>
-        <DivSvgText>
-            <SvgLittle>
-          <use href={`${icon}#location`}></use>
-          </SvgLittle>
-          <TextReviewsLocation>
-            {`${camper.location}`}
-          </TextReviewsLocation>
-        </DivSvgText>
-        </DivReviewsLocation>
+      <ReviewsLocation camper={camper}/>
         <TextDescription>{camper.description}</TextDescription>
         <UlCharacteristic>
           <LiCharacteristic
@@ -102,10 +88,16 @@ export const LiCampers = ({ camper }) => {
             />
           }
         </UlCharacteristic>
-        <ButtonShowMore>
+        <ButtonShowMore
+          type="button"
+          onClick={() => setOpenShowMore(true)}
+        >
           Show more
         </ButtonShowMore>
       </DivAllInfo>
+      {openShowMore && 
+        <ShowMore camper={camper} onClose={() => setOpenShowMore(false)}/>
+      }
     </Li>
   )
 };
