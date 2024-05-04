@@ -5,22 +5,28 @@ import {
   DivMoreInfoBooking
 } from "./MoreInfoBooking.styled";
 import { Features } from "components/Features/Features";
+import { Reviews } from "components/Reviews/Reviews";
+import { useState } from "react";
 
-export const MoreInfoBooking = ({camper}) => {
+export const MoreInfoBooking = ({ camper }) => {
+  const [selectedF, setSelectedF] = useState(true);
+  
   return (
     <>
       <DivButtons>
-      <Button>
-        <ButtonAfter />
+      <Button onClick={() => {setSelectedF(true)}}>
+        {selectedF && <ButtonAfter />}
         Features
       </Button>
-      <Button>
-        <ButtonAfter />
+      <Button onClick={() => {setSelectedF(false)}}>
+        {!selectedF && <ButtonAfter />}
         Reviews
       </Button>
       </DivButtons>
       <DivMoreInfoBooking>
-        <Features camper={camper} />
+        {selectedF && <Features camper={camper} />}
+        {!selectedF && <Reviews camper={camper} />}
+
       </DivMoreInfoBooking>
     </>
   )
