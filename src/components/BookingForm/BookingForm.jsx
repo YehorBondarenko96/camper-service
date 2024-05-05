@@ -14,7 +14,7 @@ import {
   CalendarContainer
 } from "./BookingForm.styled";
 import icon from "../../Vector.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
@@ -34,6 +34,8 @@ export const BookingForm = ({camper}) => {
   const [comment, setComment] = useState("");
 
   const [value, onChange] = useState(new Date());
+
+  const [showCalendar, setShowCalendar] = useState(false);
 
   const setUserName = (e) => { 
     let inpValue = e.target.value;
@@ -154,6 +156,29 @@ const inputDate = new Date(year, month, day);
     }
   };
 
+  const handleClickCalendarBut = () => { 
+    setShowCalendar(true);
+  };
+
+  const handleClick = e => {
+    if (e.target === e.currentTarget) {
+      setShowCalendar(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showCalendar) {
+      window.addEventListener('click', handleClick);
+    } else {
+      window.removeEventListener('click', handleClick);
+    };
+    
+
+    return () => {
+      window.removeEventListener('click', handleClick);
+    };
+  }, [showCalendar]);
+
   return (
     <>
       <AllForm onSubmit={handleSubmit}>
@@ -183,18 +208,21 @@ const inputDate = new Date(year, month, day);
           />
             <ButtonCalendar
               type="button"
+              onClick={handleClickCalendarBut}
             >
             <SvgCalendar>
               <use href={`${icon}#calendar`}></use>
             </SvgCalendar>
             </ButtonCalendar>
-            <CalendarContainer>
+            {showCalendar &&
+              <CalendarContainer>
         <Calendar
           onChange={onChange}
           value={value}
           locale="en-US"
         />
-      </CalendarContainer>
+            </CalendarContainer>
+            }
         </DivInput>
         <Textarea
           type="text"

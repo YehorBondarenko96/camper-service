@@ -29,6 +29,10 @@ p{
   padding: 0;
 }
 
+button{
+  cursor: pointer;
+}
+
 :root {
   --primery-color-red: #e44848;
   --primery-color-white: #ffffff;
