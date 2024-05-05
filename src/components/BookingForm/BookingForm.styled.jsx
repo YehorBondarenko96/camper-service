@@ -179,10 +179,8 @@ right: 25px;
 
 
   button {
-    // margin: 3px;
     background-color: var(--primery-color-white);
     border: 0;
-    // border-radius: 50%;
     color: var(--primery-color-black);
     padding: 5px 0;
     font-size: 14px;

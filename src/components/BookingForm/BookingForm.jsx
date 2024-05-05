@@ -33,7 +33,7 @@ export const BookingForm = ({camper}) => {
   const [date, setDate] = useState("");
   const [comment, setComment] = useState("");
 
-  const [value, onChange] = useState(new Date());
+  const [valueCalendar, setValueCalendar] = useState(new Date());
 
   const [showCalendar, setShowCalendar] = useState(false);
 
@@ -158,26 +158,37 @@ const inputDate = new Date(year, month, day);
 
   const handleClickCalendarBut = () => { 
     setShowCalendar(true);
+    setTimeout(() => {
+      window.addEventListener('click', handleClick);
+    }, 0);
   };
 
   const handleClick = e => {
-    if (e.target === e.currentTarget) {
+    console.log(1);
+    if (!e.target.classList.contains('calendar-div') && !e.target.closest('.calendar-div')
+      && !e.target.classList.contains('react-calendar__decade-view__years__year')
+      && !e.target.classList.contains('react-calendar__year-view__months__month')
+      && !e.target.tagName.toLowerCase() === 'abbr') {
       setShowCalendar(false);
+      window.removeEventListener('click', handleClick);
     }
   };
 
-  useEffect(() => {
-    if (showCalendar) {
-      window.addEventListener('click', handleClick);
-    } else {
-      window.removeEventListener('click', handleClick);
-    };
-    
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
+    const year = date.getFullYear().toString();
 
-    return () => {
-      window.removeEventListener('click', handleClick);
+  return `${day}.${month}.${year}`;
+};
+
+  useEffect(() => {
+    if (valueCalendar) {
+      const goodFormateDate = formatDate(valueCalendar);
+      setDate(goodFormateDate);
     };
-  }, [showCalendar]);
+  }, [valueCalendar]);
 
   return (
     <>
@@ -215,10 +226,10 @@ const inputDate = new Date(year, month, day);
             </SvgCalendar>
             </ButtonCalendar>
             {showCalendar &&
-              <CalendarContainer>
+              <CalendarContainer className="calendar-div">
         <Calendar
-          onChange={onChange}
-          value={value}
+          onChange={setValueCalendar}
+          value={valueCalendar}
           locale="en-US"
         />
             </CalendarContainer>
