@@ -1,5 +1,5 @@
 import { createSlice} from "@reduxjs/toolkit";
-import { fetchCampers, searchForBackground } from "./opertions";
+import { fetchCampers, searchForBackground, postBooking } from "./opertions";
 
 const campersInitialState = {
     items: [],
@@ -8,6 +8,7 @@ const campersInitialState = {
     error: null,
     favorItems: [],
     backgroundImage: null,
+    bookingItems: []
     };
 
 const forPending = (state) => {state.isLoading = true};
@@ -43,6 +44,14 @@ const campersSlice = createSlice({
             state.backgroundImage = action.payload[0].largeImageURL;
         })
             .addCase(searchForBackground.rejected)
+        .addCase(postBooking.pending, forPending)
+        .addCase(postBooking.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.error = null;
+            const updResult = { ...action.payload, id: action.payload._id, _id: undefined };
+            state.bookingItems.push(updResult);
+        })
+            .addCase(postBooking.rejected, forRejected)
     }
 });
 

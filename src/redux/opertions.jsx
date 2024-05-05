@@ -1,12 +1,25 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// axios.defaults.baseURL = 'https://camper-service-backend-p69o.onrender.com/api/campers';
-axios.defaults.baseURL = 'http://localhost:3000/api/campers';
+axios.defaults.baseURL = 'https://camper-service-backend-p69o.onrender.com/api/campers';
+// axios.defaults.baseURL = 'http://localhost:3000/api/campers';
 
 export const fetchCampers = createAsyncThunk('campers/fetchAll', async(page, thunkAPI) => {
     try{
         const result = await axios.get('/', {page});
+        return result.data;
+    } catch (e) {
+        if (e.response) {
+            return thunkAPI.rejectWithValue(e.response.data.message);
+        } else {
+            return thunkAPI.rejectWithValue(e.message);
+        }
+    }
+});
+
+export const postBooking = createAsyncThunk('booking/postBooking', async (data, thunkAPI) => {
+    try {
+        const result = await axios.post('/booking', data);
         return result.data;
     } catch (e) {
         if (e.response) {

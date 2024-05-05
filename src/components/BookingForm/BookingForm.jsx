@@ -15,8 +15,12 @@ import icon from "../../Vector.svg";
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from "react-redux";
+import { postBooking } from "../../redux/opertions";
 
-export const BookingForm = () => { 
+export const BookingForm = ({camper}) => { 
+  const dispatch = useDispatch();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [date, setDate] = useState('');
@@ -128,14 +132,16 @@ const inputDate = new Date(year, month, day);
     } else if (inputDate <= today) {
       e.preventDefault();
       toast.error('The selected date must be in the future')
-    } else{
+    } else {
+      e.preventDefault();
       const userData = {
         name,
         email,
         date,
-        comment
+        comment,
+        camper
       };
-      console.log(userData);
+      dispatch(postBooking(userData));
     }
   };
 

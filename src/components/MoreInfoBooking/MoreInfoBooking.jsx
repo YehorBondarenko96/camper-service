@@ -27,7 +27,7 @@ export const MoreInfoBooking = ({ camper }) => {
       <DivMoreInfoBooking>
         {selectedF && <Features camper={camper} />}
         {!selectedF && <Reviews camper={camper} />}
-        <BookingForm/>
+        <BookingForm camper={camper}/>
       </DivMoreInfoBooking>
     </>
   )
