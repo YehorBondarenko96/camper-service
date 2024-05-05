@@ -38,6 +38,7 @@ const CatalogePage = () => {
           showLoadMoreBut={showLoadMoreButCatalog}
           scrollValue={scrollValueCatalog}
           page={page}
+          idContainer='catalog-div'
           handleClick={handleClick}
         />
     </AllDiv>
