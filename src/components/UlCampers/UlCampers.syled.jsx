@@ -4,7 +4,6 @@ export const AllDiv = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-gap: 30px;
   width: 100%;
   max-height: 100%;
   // box-sizing: border-box;
@@ -21,7 +20,7 @@ export const Ul = styled.ul`
 display: flex;
 flex-direction: column;
 gap: 32px;
-margin-top: 30px;
+margin: 30px 0;
 `;
 
 export const ButtonLoadMore = styled.button`

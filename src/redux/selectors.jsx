@@ -7,3 +7,7 @@ export const selectIsLoading = state => state.campers.isLoading;
 export const selectBackgroundImage = state => state.campers.backgroundImage;
 
 export const selectFavorItems = state => state.campers.favorItems;
+
+export const selectShowLoadMoreButCatalog = state => state.campers.showLoadMoreButCatalog;
+
+export const selectScrollValueCatalog = state => state.campers.scrollValueCatalog;

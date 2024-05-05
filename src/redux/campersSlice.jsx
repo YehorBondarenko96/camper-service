@@ -9,7 +9,8 @@ const campersInitialState = {
     favorItems: [],
     backgroundImage: null,
     bookingItems: [],
-    showLoadMoreBut: true
+    showLoadMoreButCatalog: true,
+    scrollValueCatalog: 0
     };
 
 const forPending = (state) => {state.isLoading = true};
@@ -31,6 +32,9 @@ const campersSlice = createSlice({
         },
         setPage: (state, action) => {
             state.page = action.payload;
+        },
+        setScrollValueCatalog: (state, action) => {
+            state.scrollValueCatalog = action.payload;
         }
     },
     extraReducers: builder => {
@@ -39,8 +43,15 @@ const campersSlice = createSlice({
         .addCase(fetchCampers.fulfilled, (state, action) => {
             state.isLoading = false;
             state.error = null;
-            const updResult = action.payload.map(f => ({...f, id: f._id, _id: undefined}));
-            state.items = updResult;
+            const updResult = action.payload.map(f => ({ ...f, id: f._id, _id: undefined }));
+            if (updResult.length < 4) {
+                state.showLoadMoreButCatalog = false;
+            };
+            updResult.forEach(item => { 
+                if (!state.items.find(i => i.id === item.id)) {
+                    state.items.push(item)
+                }
+            });
         })
             .addCase(fetchCampers.rejected, forRejected)
         .addCase(searchForBackground.pending)
@@ -60,4 +71,4 @@ const campersSlice = createSlice({
 });
 
 export const campersReducer = campersSlice.reducer;
-export const {addFavor, delFavor, setPage} = campersSlice.actions;
+export const {addFavor, delFavor, setPage, setScrollValueCatalog} = campersSlice.actions;

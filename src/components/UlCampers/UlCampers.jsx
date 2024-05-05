@@ -1,30 +1,32 @@
 import { AllDiv, Ul, ButtonLoadMore } from "./UlCampers.syled";
 import { LiCampers } from "components/LiCampers/LiCampers";
-import { useDispatch, useSelector } from "react-redux";
-import { selectPage } from "../../redux/selectors";
-import { setPage } from "../../redux/campersSlice";
-import { fetchCampers } from "../../redux/opertions";
+import { useRef, useEffect } from "react";
 
-export const UlCampers = ({ campers }) => {
-  const dispatch = useDispatch();
-  const page = useSelector(selectPage);
+export const UlCampers = ({ campers, showLoadMoreBut, scrollValue, page, handleClick }) => {
 
-  const handleClick = () => {
-    dispatch(setPage(page + 1));
-    dispatch(fetchCampers(page + 1));
-  };
+  const catalogDivRef = useRef(null);
+
+  useEffect(() => {
+    if (catalogDivRef.current) {
+      const catalogDiv = catalogDivRef.current;
+
+      catalogDiv.scrollTop = page > 1 ? scrollValue + 300 : scrollValue;
+    }
+  }, [scrollValue, page]);
 
   return (
-    <AllDiv>
+    <AllDiv ref={catalogDivRef}  id="catalog-div">
       <Ul>
       {campers.map((camper, index) => <LiCampers key={index} camper={camper}/>)}
       </Ul>
+      {showLoadMoreBut && 
       <ButtonLoadMore
         type="button"
         onClick={handleClick}
       >
         Load more
-      </ButtonLoadMore>
+        </ButtonLoadMore>
+      }
     </AllDiv>
   )
 };
