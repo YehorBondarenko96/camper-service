@@ -164,7 +164,6 @@ const inputDate = new Date(year, month, day);
   };
 
   const handleClick = e => {
-    console.log(1);
     if (!e.target.classList.contains('calendar-div') && !e.target.closest('.calendar-div')
       && !e.target.classList.contains('react-calendar__decade-view__years__year')
       && !e.target.classList.contains('react-calendar__year-view__months__month')

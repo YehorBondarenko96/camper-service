@@ -1,11 +1,6 @@
-import { Filters } from "components/Filters/Filters";
-import { UlCampers } from "components/UlCampers/UlCampers";
+import { Page } from "components/Page/Page";
 import { useSelector } from "react-redux";
-import {
-  selectFavorItems,
-} from "../../redux/selectors";
-import { AllDiv } from "./FavoritePage.styled";
-import { Header } from "components/Header/Header";
+import { selectFavorItems } from "../../redux/selectors";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -27,7 +22,7 @@ const FavoritePage = () => {
     const pageSize = 4; 
     const startIdx = (page - 1) * pageSize;
     const endIdx = startIdx + pageSize;
-  const nextCampersFavorite = allCampersFavorite.slice(startIdx, endIdx);
+    const nextCampersFavorite = allCampersFavorite.slice(startIdx, endIdx);
 
     if (nextCampersFavorite.length < 4) {
       setShowLoadMoreButFavorite(false);
@@ -49,20 +44,15 @@ const FavoritePage = () => {
   };
 
   return (
-    <>
-      <Header showFavorite= 'true' />
-      <AllDiv>
-      <Filters />
-        <UlCampers
-          campers={campersFavorite}
-          showLoadMoreBut={showLoadMoreButFavorite}
-          scrollValue={scrollValueFavorite}
-          page={page}
-          idContainer='favorite-div'
-          handleClick={handleClick}
-        />
-    </AllDiv>
-    </>
+    <Page
+      allCampers={campersFavorite}
+      page={page}
+      showLoadMoreBut={showLoadMoreButFavorite}
+      scrollValue={scrollValueFavorite}
+      idContainer='favorite-div'
+      showFavorite={true}
+      handleClick={handleClick}
+    />
   )
 };
 

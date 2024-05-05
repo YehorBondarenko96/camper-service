@@ -2,7 +2,7 @@ import { AllDiv, DivLinks, AbdLink } from "./Header.styled";
 import { useSelector } from "react-redux";
 import { selectFavorItems } from "../../redux/selectors";
 
-export const Header = ({showFavorite = false}) => { 
+export const Header = ({showFavorite}) => { 
   const favorItems = useSelector(selectFavorItems);
 
   return (
@@ -15,7 +15,7 @@ export const Header = ({showFavorite = false}) => {
             <AbdLink to='/catalog'>
           Catalog
         </AbdLink>
-        ) : (favorItems.length > 0 &&
+        ) : (favorItems.length > 0 && 
           <AbdLink to='/favorites'>
           Favorites
         </AbdLink>

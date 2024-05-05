@@ -12,7 +12,7 @@ export const UlCampers = ({ campers, showLoadMoreBut, scrollValue, page, idConta
       
       setTimeout(() => {
         catalogDiv.scrollTop = page > 1 ? scrollValue + 300 : scrollValue;
-      }, 0);
+      }, 100);
     }
   }, [scrollValue, page]);
 
