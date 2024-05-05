@@ -168,7 +168,7 @@ const inputDate = new Date(year, month, day);
     if (!e.target.classList.contains('calendar-div') && !e.target.closest('.calendar-div')
       && !e.target.classList.contains('react-calendar__decade-view__years__year')
       && !e.target.classList.contains('react-calendar__year-view__months__month')
-      && !e.target.tagName.toLowerCase() === 'abbr') {
+      && !e.target.closest('.react-calendar__year-view__months__month')) {
       setShowCalendar(false);
       window.removeEventListener('click', handleClick);
     }
