@@ -6,7 +6,7 @@ axios.defaults.baseURL = 'http://localhost:3000/api/campers';
 
 export const fetchCampers = createAsyncThunk('campers/fetchAll', async(page, thunkAPI) => {
     try{
-        const result = await axios.get('/', {page});
+        const result = await axios.get(`/?page=${page}`);
         return result.data;
     } catch (e) {
         if (e.response) {

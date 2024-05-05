@@ -10,7 +10,6 @@ justify-content: end;
 align-items: center;
 padding: 0 30px;
 box-sizing: border-box;
-margin-bottom: 30px;
 `;
 
 export const DivLinks = styled.div`

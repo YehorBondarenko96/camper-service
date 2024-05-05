@@ -27,6 +27,9 @@ const campersSlice = createSlice({
         delFavor: (state, action) => {
             const index = state.favorItems.findIndex(fav => fav.id === action.payload.id);
             state.favorItems.splice(index, 1);
+        },
+        setPage: (state, action) => {
+            state.page = action.payload;
         }
     },
     extraReducers: builder => {
@@ -56,4 +59,4 @@ const campersSlice = createSlice({
 });
 
 export const campersReducer = campersSlice.reducer;
-export const {addFavor, delFavor} = campersSlice.actions;
+export const {addFavor, delFavor, setPage} = campersSlice.actions;

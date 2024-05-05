@@ -15,7 +15,7 @@ import storage from "redux-persist/lib/storage";
 const authConfig = {
     key: 'campers',
     storage,
-    whitelist: ['favorItems', 'page'],
+    whitelist: ['favorItems'],
 };
 
 export const store = configureStore({

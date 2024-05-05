@@ -14,7 +14,6 @@ export const Backdrop = styled.div`
 `;
 
 export const Container = styled.div`
-  // display: flex;
   width: 982px;
   max-height: 100%;
   margin: 40px 0;
