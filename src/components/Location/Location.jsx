@@ -5,8 +5,19 @@ import {
   Input,Svg
 } from "./Location.styled";
 import icon from "../../Vector.svg";
- 
-export const Location = ({value, onChange }) => { 
+import { selectValueLocation } from "../../redux/selectors";
+import { setValueLocation } from "../../redux/campersSlice";
+import { useSelector, useDispatch } from "react-redux";
+
+export const Location = () => { 
+  const dispatch = useDispatch();
+  const value = useSelector(selectValueLocation);
+
+  const onChange = (e) => {
+    const inpValue = e.target.value;
+    dispatch(setValueLocation(inpValue));
+  };
+
   return (
     <AllDiv>
       <TitleInput>Location</TitleInput>

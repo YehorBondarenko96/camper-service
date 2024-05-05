@@ -10,7 +10,18 @@ const campersInitialState = {
     backgroundImage: null,
     bookingItems: [],
     showLoadMoreButCatalog: true,
-    scrollValueCatalog: 0
+    scrollValueCatalog: 0,
+    filters: {
+        location: '',
+        valueAC: false,
+        valueTransm: false,
+        valueKitch: false,
+        valueTV: false,
+        valueShower: false,
+        valueVan: false,
+        valueFullIntedr: false,
+        valueAlcove: false
+    }
     };
 
 const forPending = (state) => {state.isLoading = true};
@@ -35,7 +46,34 @@ const campersSlice = createSlice({
         },
         setScrollValueCatalog: (state, action) => {
             state.scrollValueCatalog = action.payload;
-        }
+        },
+        setValueAC: (state, action) => {
+            state.filters.valueAC = action.payload;
+        },
+setValueTransm: (state, action) => {
+    state.filters.valueTransm = action.payload;
+},
+setValueKitch: (state, action) => {
+    state.filters.valueKitch = action.payload;
+},
+setValueTV: (state, action) => {
+    state.filters.valueTV = action.payload;
+},
+setValueShower: (state, action) => {
+    state.filters.valueShower = action.payload;
+        },
+setValueLocation: (state, action) => {
+    state.filters.location = action.payload;
+        },
+setValueVan: (state, action) => {
+    state.filters.valueVan = action.payload;
+},
+setValueFullIntedr: (state, action) => {
+    state.filters.valueFullIntedr = action.payload;
+        },
+setValueAlcove: (state, action) => {
+    state.filters.valueAlcove = action.payload;
+},
     },
     extraReducers: builder => {
         builder
@@ -71,4 +109,18 @@ const campersSlice = createSlice({
 });
 
 export const campersReducer = campersSlice.reducer;
-export const {addFavor, delFavor, setPage, setScrollValueCatalog} = campersSlice.actions;
+export const {
+    addFavor,
+    delFavor,
+    setPage,
+    setScrollValueCatalog,
+    setValueAC,
+setValueTransm,
+setValueKitch,
+setValueTV,
+    setValueShower,
+    setValueLocation,
+    setValueVan,
+    setValueFullIntedr,
+setValueAlcove
+} = campersSlice.actions;

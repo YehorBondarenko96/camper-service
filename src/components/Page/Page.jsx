@@ -4,59 +4,112 @@ import { AllDiv, DivLocationFilters } from "./Page.styled";
 import { Header } from "components/Header/Header";
 import { Location } from "components/Location/Location";
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectValueAC,
+  selectValueTransm,
+  selectValueKitch,
+  selectValueTV,
+  selectValueShower,
+  selectValueLocation,
+  selectValueVan,
+  selectValueFullIntedr,
+  selectValueAlcove
+} from "../../redux/selectors";
+import {
+  setValueAC,
+  setValueTransm,
+  setValueKitch,
+  setValueTV,
+  setValueShower,
+  setValueVan,
+  setValueFullIntedr,
+  setValueAlcove
+} from "../../redux/campersSlice";
 
 export const Page = ({allCampers, page, showLoadMoreBut, scrollValue, idContainer, showFavorite, handleClick}) => { 
-  const [valueLocation, setValueLocation] = useState("");
+  const dispatch = useDispatch();
+  const valueAC = useSelector(selectValueAC);
+  const valueTransm = useSelector(selectValueTransm);
+  const valueKitch = useSelector(selectValueKitch);
+  const valueTV = useSelector(selectValueTV);
+  const valueShower = useSelector(selectValueShower);
+  const valueVan = useSelector(selectValueVan);
+  const valueFullIntedr = useSelector(selectValueFullIntedr);
+  const valueAlcove = useSelector(selectValueAlcove);
+
+  const valueLocation = useSelector(selectValueLocation);
+
   const [renderCampers, setRenderCampers] = useState([]);
-  const [valueAC, setValueAC] = useState(false);
-  const [valueTransm, setValueTransm] = useState(false);
-  const [valueKitch, setValueKitch] = useState(false);
-  const [valueTV, setValueTV] = useState(false);
-  const [valueShower, setValueShower] = useState(false);
 
   const onClickAC = () => { 
     if (valueAC) {
-      setValueAC(false)
+      dispatch(setValueAC(false))
     } else {
-      setValueAC(true)
+      dispatch(setValueAC(true))
     }
   };
 
   const onClickTransm = () => { 
     if (valueTransm) {
-      setValueTransm(false)
+      dispatch(setValueTransm(false))
     } else {
-      setValueTransm(true)
+      dispatch(setValueTransm(true))
     }
   };
 
   const onClickKitch = () => { 
     if (valueKitch) {
-      setValueKitch(false)
+      dispatch(setValueKitch(false))
     } else {
-      setValueKitch(true)
+      dispatch(setValueKitch(true))
     }
   };
 
   const onClickTV = () => { 
     if (valueTV) {
-      setValueTV(false)
+      dispatch(setValueTV(false))
     } else {
-      setValueTV(true)
+      dispatch(setValueTV(true))
     }
   };
 
   const onClickShower = () => { 
     if (valueShower) {
-      setValueShower(false)
+      dispatch(setValueShower(false))
     } else {
-      setValueShower(true)
+      dispatch(setValueShower(true))
     }
   };
 
-  const onChangeLocation = (e) => { 
-    const inpValue = e.target.value;
-    setValueLocation(inpValue);
+  const onClickVan = () => { 
+    if (valueVan) {
+      dispatch(setValueVan(false))
+    } else {
+      dispatch(setValueVan(true));
+      dispatch(setValueFullIntedr(false));
+      dispatch(setValueAlcove(false));
+    }
+  };
+
+  const onClickFullIntedr = () => { 
+    if (valueFullIntedr) {
+      dispatch(setValueFullIntedr(false))
+    } else {
+      dispatch(setValueFullIntedr(true));
+      dispatch(setValueVan(false));
+      dispatch(setValueAlcove(false));
+    }
+  };
+
+  const onClickAlcove = () => { 
+    if (valueAlcove) {
+      dispatch(setValueAlcove(false))
+    } else {
+      dispatch(setValueAlcove(true));
+      dispatch(setValueFullIntedr(false));
+      dispatch(setValueVan(false));
+    }
   };
 
   useEffect(() => {
@@ -87,29 +140,36 @@ export const Page = ({allCampers, page, showLoadMoreBut, scrollValue, idContaine
       intermArr = intermArr.filter((camper) => camper.details.shower > 0);
     };
 
+    if (valueVan) {
+      intermArr = intermArr.filter((camper) => camper.form === "panelTruck");
+    };
+
+    if (valueFullIntedr) {
+      intermArr = intermArr.filter((camper) => camper.form === "fullyIntegrated");
+    };
+
+    if (valueAlcove) {
+      intermArr = intermArr.filter((camper) => camper.form === "alcove");
+    };
+
     setRenderCampers(intermArr)
-  }, [allCampers, valueLocation, valueAC, valueTransm, valueKitch, valueTV, valueShower]);
+  }, [allCampers, valueLocation, valueAC, valueTransm, valueKitch, valueTV, valueShower, valueVan, valueFullIntedr, valueAlcove]);
 
   return (
     <>
       <Header showFavorite={showFavorite} />
       <AllDiv>
         <DivLocationFilters>
-          <Location
-            value={valueLocation}
-            onChange={onChangeLocation}
-          />
+          <Location/>
           <Filters
             onClickAC={onClickAC}
-            valueAC={valueAC}
             onClickTransm={onClickTransm}
-            valueTransm={valueTransm}
             onClickKitch={onClickKitch}
-            valueKitch={valueKitch}
             onClickTV={onClickTV}
-            valueTV={valueTV}
             onClickShower={onClickShower}
-            valueShower={valueShower}
+            onClickVan={onClickVan}
+            onClickFullIntedr={onClickFullIntedr}
+            onClickAlcove={onClickAlcove}
           />
         </DivLocationFilters>
         <UlCampers

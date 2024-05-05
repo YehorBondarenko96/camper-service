@@ -37,6 +37,7 @@ export const Ul = styled.ul`
 display: flex;
 gap: 8px 10px;
 flex-wrap: wrap;
+margin-bottom: 32px;
 `;
 
 export const Li = styled.li`
@@ -79,4 +80,10 @@ export const TextParams = styled.p`
 font-size: 16px;
 font-weight: 500;
 line-height: 1.25;
+`;
+
+export const BigSvg = styled.svg`
+width: 40px;
+height: 28px;
+box-sizing: border-box;
 `;

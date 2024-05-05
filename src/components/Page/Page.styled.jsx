@@ -14,4 +14,12 @@ display: flex;
 flex-direction: column;
 width: 360px;
 box-sizing: border-box;
+max-height: 100%;
+overflow: auto;
+scrollbar-width: none; 
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+  display: none;
+  }
 `;
