@@ -21,14 +21,14 @@ import { postBooking } from "../../redux/opertions";
 export const BookingForm = ({camper}) => { 
   const dispatch = useDispatch();
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [date, setDate] = useState('');
-  const [comment, setComment] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [date, setDate] = useState("");
+  const [comment, setComment] = useState("");
 
   const setUserName = (e) => { 
     let inpValue = e.target.value;
-    const pattern = /^[a-zA-Zа-яА-Я\s']+$/;
+    const pattern = /^[a-zA-Zа-яА-Яіё\s']+$/;
     if (!pattern.test(inpValue)) {
     toast.error('Not valid symbol for a name')
     inpValue = inpValue.slice(0, -1); 
@@ -172,7 +172,9 @@ const inputDate = new Date(year, month, day);
             value={date}
             onChange={setSelectedDate}
           />
-          <ButtonCalendar>
+            <ButtonCalendar
+              type="button"
+            >
             <SvgCalendar>
               <use href={`${icon}#calendar`}></use>
             </SvgCalendar>
