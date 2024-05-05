@@ -7,8 +7,11 @@ import {
 import { AllDiv } from "./FavoritePage.styled";
 import { Header } from "components/Header/Header";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const FavoritePage = () => { 
+  const navigate = useNavigate();
+
   const allCampersFavorite = useSelector(selectFavorItems);
 
   const [page, setPage] = useState(1);
@@ -17,6 +20,10 @@ const FavoritePage = () => {
   const [showLoadMoreButFavorite, setShowLoadMoreButFavorite] = useState(true);
 
   useEffect(() => {
+    if (allCampersFavorite.length < 1) { 
+      navigate('/');
+    };
+
     const pageSize = 4; 
     const startIdx = (page - 1) * pageSize;
     const endIdx = startIdx + pageSize;
@@ -30,7 +37,7 @@ const FavoritePage = () => {
           setCampersFavorite([...campersFavorite, item])
       }
   });
-  }, [allCampersFavorite, campersFavorite, page]);
+  }, [allCampersFavorite, campersFavorite, page, navigate]);
   
 
   const handleClick = () => {

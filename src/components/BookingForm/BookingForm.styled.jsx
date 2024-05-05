@@ -116,3 +116,98 @@ background-color: var(--input-color-gray);
 color: var(--second-color-grey);
 }
 `;
+
+export const DivToast = styled.div`
+position: absolute;
+`;
+
+export const CalendarContainer = styled.div`
+width: 325px;
+box-sizing: border-box;
+border: 1px solid var(--border-color-grey);
+border-radius: 12px;
+background-color: var(--primery-color-white);
+padding: 16px;
+position: absolute;
+bottom: 70%;
+right: 25px;
+
+
+.react-calendar__navigation {
+    display: flex;
+
+    .react-calendar__navigation__label {
+      font-weight: bold;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--primery-color-black);
+    }
+
+    .react-calendar__navigation__arrow {
+      flex-grow: 0.333;
+      font-size: 30px;
+      font-weight: 200;
+      width: 24px;
+      height: 24px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      &:hover {
+      background-color: transparent;
+      color: var(--third-color-red);
+    }
+
+    &:active {
+      background-color: transparent;
+      color: var(--second-color-red);
+    }
+    }
+  }
+
+  .react-calendar__month-view__weekdays {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--second-color-grey);
+    margin: 20px 0;
+  }
+
+
+
+  button {
+    // margin: 3px;
+    background-color: var(--primery-color-white);
+    border: 0;
+    // border-radius: 50%;
+    color: var(--primery-color-black);
+    padding: 5px 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+
+    &:hover {
+      background-color: var(--third-color-red);
+      color: var(--primery-color-black);
+    }
+
+    &:active {
+      background-color: var(--second-color-red);
+      color: var(--primery-color-white);
+    }
+  }
+
+
+  .react-calendar__month-view__days__day--neighboringMonth {
+    opacity: 0.7;
+    color: var(--second-color-grey);
+  }
+
+  .react-calendar__tile--range {
+      background-color: var(--primery-color-red);
+      color: var(--primery-color-white);
+  }
+`;

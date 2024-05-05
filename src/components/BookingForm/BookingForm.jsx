@@ -9,7 +9,9 @@ import {
   Textarea,
   ButtonSend,
   ButtonCalendar,
-  SvgCalendar
+  SvgCalendar,
+  DivToast,
+  CalendarContainer
 } from "./BookingForm.styled";
 import icon from "../../Vector.svg";
 import { useState } from "react";
@@ -17,6 +19,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
 import { postBooking } from "../../redux/opertions";
+import Calendar from "react-calendar";
+import { registerLocale } from 'react-datepicker';
+import enUS from 'date-fns/locale/en-US';
+
+registerLocale('en-US', enUS);
 
 export const BookingForm = ({camper}) => { 
   const dispatch = useDispatch();
@@ -25,6 +32,8 @@ export const BookingForm = ({camper}) => {
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
   const [comment, setComment] = useState("");
+
+  const [value, onChange] = useState(new Date());
 
   const setUserName = (e) => { 
     let inpValue = e.target.value;
@@ -178,7 +187,14 @@ const inputDate = new Date(year, month, day);
             <SvgCalendar>
               <use href={`${icon}#calendar`}></use>
             </SvgCalendar>
-          </ButtonCalendar>
+            </ButtonCalendar>
+            <CalendarContainer>
+        <Calendar
+          onChange={onChange}
+          value={value}
+          locale="en-US"
+        />
+      </CalendarContainer>
         </DivInput>
         <Textarea
           type="text"
@@ -193,7 +209,7 @@ const inputDate = new Date(year, month, day);
         Send
       </ButtonSend>
     </AllForm>
-      <ToastContainer />
+      <DivToast><ToastContainer/></DivToast>
     </>
   )
 };
