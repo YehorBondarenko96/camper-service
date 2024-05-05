@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/camper-service/static/css/main.3d1ab2cf.css",
-    "main.js": "/camper-service/static/js/main.3859b14f.js",
+    "main.css": "/camper-service/static/css/main.97dfa0c7.css",
+    "main.js": "/camper-service/static/js/main.e57a7d0f.js",
     "static/js/812.850e1bec.chunk.js": "/camper-service/static/js/812.850e1bec.chunk.js",
     "static/js/445.0e63cbf5.chunk.js": "/camper-service/static/js/445.0e63cbf5.chunk.js",
     "static/js/438.def68df4.chunk.js": "/camper-service/static/js/438.def68df4.chunk.js",
     "static/css/842.d0194c03.chunk.css": "/camper-service/static/css/842.d0194c03.chunk.css",
     "static/js/842.af0b9d62.chunk.js": "/camper-service/static/js/842.af0b9d62.chunk.js",
-    "static/js/89.c33db475.chunk.js": "/camper-service/static/js/89.c33db475.chunk.js",
+    "static/js/89.be1b0d46.chunk.js": "/camper-service/static/js/89.be1b0d46.chunk.js",
     "static/media/Vector.svg": "/camper-service/static/media/Vector.42f2f085681e6a37b7e94763dbce3560.svg",
     "index.html": "/camper-service/index.html",
-    "main.3d1ab2cf.css.map": "/camper-service/static/css/main.3d1ab2cf.css.map",
-    "main.3859b14f.js.map": "/camper-service/static/js/main.3859b14f.js.map",
+    "main.97dfa0c7.css.map": "/camper-service/static/css/main.97dfa0c7.css.map",
+    "main.e57a7d0f.js.map": "/camper-service/static/js/main.e57a7d0f.js.map",
     "812.850e1bec.chunk.js.map": "/camper-service/static/js/812.850e1bec.chunk.js.map",
     "445.0e63cbf5.chunk.js.map": "/camper-service/static/js/445.0e63cbf5.chunk.js.map",
     "438.def68df4.chunk.js.map": "/camper-service/static/js/438.def68df4.chunk.js.map",
     "842.d0194c03.chunk.css.map": "/camper-service/static/css/842.d0194c03.chunk.css.map",
     "842.af0b9d62.chunk.js.map": "/camper-service/static/js/842.af0b9d62.chunk.js.map",
-    "89.c33db475.chunk.js.map": "/camper-service/static/js/89.c33db475.chunk.js.map"
+    "89.be1b0d46.chunk.js.map": "/camper-service/static/js/89.be1b0d46.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d1ab2cf.css",
-    "static/js/main.3859b14f.js"
+    "static/css/main.97dfa0c7.css",
+    "static/js/main.e57a7d0f.js"
   ]
 }
