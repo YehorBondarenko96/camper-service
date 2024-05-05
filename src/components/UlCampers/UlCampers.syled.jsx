@@ -4,9 +4,9 @@ export const AllDiv = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-  width: 100%;
+width: 888px;
+box-sizing: border-box;
   max-height: 100%;
-  // box-sizing: border-box;
   overflow: auto;
 scrollbar-width: none; 
   -ms-overflow-style: none;
