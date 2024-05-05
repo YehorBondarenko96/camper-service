@@ -8,7 +8,8 @@ const campersInitialState = {
     error: null,
     favorItems: [],
     backgroundImage: null,
-    bookingItems: []
+    bookingItems: [],
+    showLoadMoreBut: true
     };
 
 const forPending = (state) => {state.isLoading = true};
